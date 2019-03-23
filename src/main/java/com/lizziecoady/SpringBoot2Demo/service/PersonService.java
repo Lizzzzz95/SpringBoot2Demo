@@ -13,8 +13,9 @@ public class PersonService {
 
     private final PersonDao personDao;
 
+//    Qualifier switches database (look in dao files)
     @Autowired
-    public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
+    public PersonService(@Qualifier("psql") PersonDao personDao) {
         this.personDao = personDao;
     }
 

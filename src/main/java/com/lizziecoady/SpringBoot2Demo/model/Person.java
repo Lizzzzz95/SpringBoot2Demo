@@ -2,12 +2,14 @@ package com.lizziecoady.SpringBoot2Demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 public class Person {
 
 //    a UUID is a Universally Unique Identifier, e.g 123e4567-e89b-12d3-a456-556642440000
     private final UUID id;
+    @NotBlank
     private final String name;
 
 //    when we use postman, @JsonProperty will make spring recognise the parameters

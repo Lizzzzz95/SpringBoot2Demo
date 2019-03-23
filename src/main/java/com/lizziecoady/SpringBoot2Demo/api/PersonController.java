@@ -3,8 +3,10 @@ package com.lizziecoady.SpringBoot2Demo.api;
 import com.lizziecoady.SpringBoot2Demo.model.Person;
 import com.lizziecoady.SpringBoot2Demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @RequestMapping("/api/v1/person")
@@ -20,7 +22,7 @@ public class PersonController {
 
 //    This tells Spring that this is a post request
     @PostMapping
-    public void addPerson(@RequestBody Person person) {
+    public void addPerson(@Valid @NonNull @RequestBody Person person) {
         personService.addPerson(person);
     }
 
@@ -42,7 +44,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePersonById(@PathVariable("id") UUID id, @RequestBody Person personToUpdate ) {
+    public void updatePersonById(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Person personToUpdate ) {
         personService.updatePerson(id, personToUpdate);
     }
 }
